@@ -4,7 +4,7 @@ that can be found in the LICENSE file. -->
 
 # photo_manager
 
-English | [中文](README-ZH.md) | [한국어](README-KR.md)
+[English](README.md) | [中文](README-ZH.md) | 한국어
 
 [![pub package](https://img.shields.io/pub/v/photo_manager?label=stable)][pub package]
 [![pub pre-release package](https://img.shields.io/pub/v/photo_manager?color=9d00ff&include_prereleases&label=dev)](https://pub.dev/packages/photo_manager)
@@ -16,46 +16,46 @@ English | [中文](README-ZH.md) | [한국어](README-KR.md)
 [![Awesome Flutter](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/Solido/awesome-flutter)
 <a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5bcc0gy"><img border="0" src="https://pub.idqqimg.com/wpa/images/group.png" alt="FlutterCandies" title="FlutterCandies"></a>
 
-A Flutter plugin that provides assets abstraction management APIs without UI integration,
-you can get assets (image/video/audio) on Android, iOS and macOS.
+UI 작업없이 에셋(Asset)을 관리할 수 있는 추상 API 플러그인으로,
+Android, iOS 및 macOS에서 에셋(이미지/비디오/오디오)에 접근할 수 있습니다.
 
-## Projects using this plugin
+## 이 플러그인을 사용하는 프로젝트
 
 | name                 | pub                                                                                                                | github                                                                                                                                                                  |
 | :------------------- | :----------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | wechat_assets_picker | [![pub package](https://img.shields.io/pub/v/wechat_assets_picker)](https://pub.dev/packages/wechat_assets_picker) | [![star](https://img.shields.io/github/stars/fluttercandies/flutter_wechat_assets_picker?style=social)](https://github.com/fluttercandies/flutter_wechat_assets_picker) |
 | wechat_camera_picker | [![pub package](https://img.shields.io/pub/v/wechat_camera_picker)](https://pub.dev/packages/wechat_camera_picker) | [![star](https://img.shields.io/github/stars/fluttercandies/flutter_wechat_camera_picker?style=social)](https://github.com/fluttercandies/flutter_wechat_camera_picker) |
 
-## Articles about this plugin
+## 이 플러그인에 대한 아티클
 
 - [Hard to manage media with Flutter? Try photo_manager, the all-in-one solution](https://medium.flutter.cn/hard-to-manage-media-with-flutter-try-photo-manager-the-all-in-one-solution-5188599e4cf)
 
-## Migration guide
+## 마이그레이션 가이드
 
-For versions upgrade across major versions,
-see the [migration guide](MIGRATION_GUIDE.md) for detailed info.
+메이저 버전이 변경되는 업그레이드를 하는 경우,
+자세한 내용은 [마이그레이션 문서](MIGRATION_GUIDE.md)를 확인하세요.
 
 <details>
-  <summary>TOC</summary>
+  <summary>목차</summary>
 
 <!-- TOC -->
 
 - [photo\_manager](#photo_manager)
-  - [Projects using this plugin](#projects-using-this-plugin)
-  - [Articles about this plugin](#articles-about-this-plugin)
-  - [Migration guide](#migration-guide)
-  - [Common issues](#common-issues)
-  - [Prepare for use](#prepare-for-use)
-    - [Add the plugin reference to pubspec.yaml](#add-the-plugin-reference-to-pubspecyaml)
-    - [Import in your projects](#import-in-your-projects)
-    - [Configure native platforms](#configure-native-platforms)
-      - [Android config preparation](#android-config-preparation)
+  - [이 플러그인을 사용하는 프로젝트](#이-플러그인을-사용하는-프로젝트)
+  - [이 플러그인에 대한 아티클](#이-플러그인에-대한-아티클)
+  - [마이그레이션 가이드](#마이그레이션-가이드)
+  - [자주 묻는 질문](#자주-묻는-질문)
+  - [준비 단계](#준비-단계)
+    - [pubspec.yaml에 플러그인 의존성 추가](#pubspecyaml에-플러그인-의존성-추가)
+    - [프로젝트에 Import 하기](#프로젝트에-import-하기)
+    - [네이티브 플랫폼 구성 설정](#네이티브-플랫폼-구성-설정)
+      - [Android 구성 설정](#android-구성-설정)
         - [Kotlin, Gradle, AGP](#kotlin-gradle-agp)
         - [Android 10 (Q, 29)](#android-10-q-29)
         - [Glide](#glide)
-      - [iOS config preparation](#ios-config-preparation)
-  - [Usage](#usage)
-    - [Request for permission](#request-for-permission)
+      - [iOS 구성 설정](#ios-구성-설정)
+  - [사용법](#사용법)
+    - [권한 요청](#권한-요청)
       - [Limited entities access](#limited-entities-access)
         - [Limited entities access on iOS](#limited-entities-access-on-ios)
         - [Limited entities access on android](#limited-entities-access-on-android)
@@ -109,72 +109,71 @@ see the [migration guide](MIGRATION_GUIDE.md) for detailed info.
 
 </details>
 
-## Common issues
+## 자주 묻는 질문
 
-Please search common issues in [GitHub issues][]
-for build errors, runtime exceptions, etc.
+빌드 오류, 런타임 예외 등 일반적으로 자주 발생하는 문제에 대해서는
+[GitHub issues][]에서 먼저 검색하세요.
 
-## Prepare for use
+## 준비 단계
 
-### Add the plugin reference to pubspec.yaml
+### pubspec.yaml에 플러그인 의존성 추가
 
-Two ways to add the plugin to your pubspec:
+pubspec에 의존성을 추가하는 2가지 방법:
 
-- **(Recommend)** Run `flutter pub add photo_manager`.
-- Add the plugin reference in your `pubspec.yaml`'s `dependencies` section:
+- **(권장)** 터미널에서 `flutter pub add photo_manager` 실행.
+- `pubspec.yaml`파일의 `dependencies` 부분에 플러그인 참조 문자열 추가:
 
 ```yaml
 dependencies:
   photo_manager: $latest_version
 ```
 
-The latest stable version is:
+가장 최신 버전은 다음과 같습니다:
 [![pub package](https://img.shields.io/pub/v/photo_manager.svg)][pub package]
 
-### Import in your projects
+### 프로젝트에 Import 하기
 
 ```dart
 import 'package:photo_manager/photo_manager.dart';
 ```
 
-### Configure native platforms
+### 네이티브 플랫폼 구성 설정
 
-Minimum platform versions:
+각 플랫폼별 최소 버전:
 **Android 16, iOS 9.0, macOS 10.15**.
 
-- Android: [Android config preparation](#android-config-preparation).
-- iOS: [iOS config preparation](#ios-config-preparation).
-- macOS: Pretty much the same with iOS.
+- Android: [Android 구성 설정](#android-config-preparation).
+- iOS: [iOS 구성 설정](#ios-config-preparation).
+- macOS: iOS와 거의 동일합니다.
 
-#### Android config preparation
+#### Android 구성 설정
 
 ##### Kotlin, Gradle, AGP
 
-We ship this plugin with **Kotlin `1.7.22`**.
-If your projects use a lower version of Kotlin/Gradle/AGP,
-please upgrade them to a newer version.
+이 플러그인은 **Kotlin `1.7.22`** 버전을 사용합니다.
+프로젝트가 위 버전보다 낮은 Kotlin/Gradle/AGP 버전을 사용하는 경우,
+최신 버전으로 업그레이드 하세요.
 
-More specifically:
+상세 부연 설명:
 
-- Upgrade your Gradle version (`gradle-wrapper.properties`)
-  to `7.5.1` or the latest version.
-- Upgrade your Kotlin version (`ext.kotlin_version`)
-  to `1.7.22` or the latest version.
-- Upgrade your AGP version (`com.android.tools.build:gradle`)
-  to `7.2.2` or the latest version.
+- Gradle version (`gradle-wrapper.properties`)을
+  `7.5.1` 또는 그 이상 버전으로 업그레이드 하세요.
+- Kotlin version (`ext.kotlin_version`)을
+  `1.7.22` 또는 그 이상 버전으로 업그레이드 하세요.
+- AGP version (`com.android.tools.build:gradle`)을
+  `7.2.2` 또는 그 이상 버전으로 업그레이드 하세요.
 
 ##### Android 10 (Q, 29)
 
-_If you're not setting your `compileSdkVersion` or `targetSdkVersion` to 29,
-you can skip this section._
+_`compileSdkVersion` 또는 `targetSdkVersion`이 29가 아닌 경우,
+이 부분은 건너 뛰어도 됩니다._
 
-On Android 10, **Scoped Storage** was introduced,
-which causes the origin resource file not directly
-inaccessible through it file path.
+Android 10에서 **Scoped Storage** 가 도입되었으며,
+원본 리소스 파일에 파일 경로를 통해 직접 액세스할 수 없습니다.
 
-If your `compileSdkVersion` or `targetSdkVersion` is `29`,
-you can consider adding `android:requestLegacyExternalStorage="true"`
-to your `AndroidManifest.xml` in order to obtain resources:
+`compileSdkVersion` 또는 `targetSdkVersion`이 `29`인 경우,
+리소스에 이용하기 위해 `AndroidManifest.xml`에 `android:requestLegacyExternalStorage="true"`을
+추가하는 것을 고려해볼 수 있습니다.:
 
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -188,58 +187,57 @@ to your `AndroidManifest.xml` in order to obtain resources:
 </manifest>
 ```
 
-**Note: Apps that are using the flag will be rejected from the Google Play.**
+**주의: 이 플래그 사용이 설정된 앱은 Google Play에서 반려될 수 있습니다.**
 
-This is not a requirement, the plugin can still work with caching files.
-But you'll need to control caches on your own, the best practice is to clear file caches
-each time when you start your app by calling `PhotoManager.clearFileCache()`.
+해당 부분은 필수 사항이 아니며, 플러그인 여전히 캐싱파일과 함께 동작합니다.
+하지만 캐시는 스스로 제어해야 합니다. 가장 좋은 방법은 앱이 시작될 때 마다
+`PhotoManager.clearFileCache()`을 호출하여 파일 캐시를 지우는 방법입니다.
 
 ##### Glide
 
-The plugin use [Glide][] to create thumbnail bytes for Android.
+안드로이드에서 썸네일을 생성하기 위해 [Glide][]를 사용합니다.
 
-If you found some warning logs with Glide appearing,
-it means the main project needs an implementation of `AppGlideModule`.
-See [Generated API][] for the implementation.
+Glide 관련 표시와 함께 경고 로그가 발생한다면,
+프로젝트에서 `AppGlideModule`의 구현이 필요합니다.
+구현을 위해 [Generated API][]을 참고하십시오.
 
-#### iOS config preparation
+#### iOS 구성 설정
 
-Define the `NSPhotoLibraryUsageDescription`
-key-value in the `ios/Runner/Info.plist`:
+`ios/Runner/Info.plist` 에서
+`NSPhotoLibraryUsageDescription` key-value를 추가하세요:
 
 ```plist
 <key>NSPhotoLibraryUsageDescription</key>
-<string>In order to access your photo library</string>
+<string>사진 등록을 위해 앨범 접근 권한이 필요합니다.</string>
 ```
 
-If you want to grant only write-access to the photo library on iOS 11 and above,
-define the `NSPhotoLibraryAddUsageDescription`
-key-value in the `ios/Runner/Info.plist`.
-It's pretty much the same as the `NSPhotoLibraryUsageDescription`.
+iOS 11 이상의 사진 라이브러리에 쓰기 액세스 권한만 부여하고 싶다면,
+`ios/Runner/Info.plist` 에서
+`NSPhotoLibraryAddUsageDescription` key-value를 추가하세요:
+`NSPhotoLibraryUsageDescription` 설정과 동일합니다.
 
 ![permissions in Xcode](https://raw.githubusercontent.com/CaiJingLong/some_asset/master/flutter_photo2.png)
 
-## Usage
+## 사용법
 
-### Request for permission
+### 권한 요청
 
-Most of the APIs can only use with granted permission.
+대부분의 API는 권한이 허락된 경우에만 사용할 수 있습니다.
 
 ```dart
 final PermissionState ps = await PhotoManager.requestPermissionExtend(); // the method can use optional param `permission`.
 if (ps.isAuth) {
-  // Granted
-  // You can to get assets here.
+  // 권한이 있는 경우
+  // 에셋에 엑세스 가능
 } else if (ps.hasAccess) {
-  // Access will continue, but the amount visible depends on the user's selection.
+  // 액세스는 계속되지만 표시되는 에셋은 사용자의 선택에 따라 달라집니다.
 } else {
-  // Limited(iOS) or Rejected, use `==` for more precise judgements.
-  // You can call `PhotoManager.openSetting()` to open settings for further steps.
+  // 제한(iOS) 또는 허용하지 않음, 정확한 확인을 위해 `==` 연산자를 사용할 수 있습니다.
+  // 추가 설정 단계를 위해 `PhotoManager.openSetting()`를 호출하여 설정 창을 열 수 있습니다.
 }
 ```
 
-But if you're pretty sure your callers will be only called
-after the permission is granted, you can ignore permission checks:
+앱에 권한이 허용된 것을 보장할 수 있는 경우, 권한 확인도 무시할 수 있습니다:
 
 ```dart
 PhotoManager.setIgnorePermissionCheck(true);
